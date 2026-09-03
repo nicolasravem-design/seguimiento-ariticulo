@@ -24,14 +24,15 @@ const EQUIPO = [
     contacto: { etiqueta: 'GitHub', url: 'https://github.com/nicolasravem-design' }
   },
   {
-    nombre: '[Nombre del integrante 2]',
-    rol: '[Rol en el proyecto]',
-    iniciales: 'I2',
+    nombre: 'Juan Pablo Sánchez',
+    rol: 'Coautor del artículo · Facultad de Ingeniería',
+    iniciales: 'JS',
     resumen:
-      'Plantilla de perfil. Sustituye este texto por un resumen profesional de tres o ' +
-      'cuatro líneas: área de formación, foco de interés y aporte concreto al proyecto.',
+      '[Resumen profesional: tres o cuatro líneas con tu área de formación, tu foco de ' +
+      'interés y el aporte concreto que hiciste al proyecto.]',
     formacion: [
-      { titulo: '[Institución]', detalle: '[Programa académico · años]' }
+      { titulo: 'Corporación Universitaria Lasallista', detalle: 'Pregrado en curso · Facultad de Ingeniería' },
+      { titulo: 'Herramientas de Inteligencia Artificial', detalle: 'Asignatura 2026 · Proyecto integrador' }
     ],
     experiencia: [
       { titulo: '[Cargo o proyecto]', detalle: '[Organización · logro medible]' }
@@ -40,14 +41,15 @@ const EQUIPO = [
     contacto: { etiqueta: 'Correo', url: 'mailto:correo@ejemplo.com' }
   },
   {
-    nombre: '[Nombre del integrante 3]',
-    rol: '[Rol en el proyecto]',
-    iniciales: 'I3',
+    nombre: 'Samuel Valencia',
+    rol: 'Coautor del artículo · Facultad de Ingeniería',
+    iniciales: 'SV',
     resumen:
-      'Plantilla de perfil. Sustituye este texto por un resumen profesional de tres o ' +
-      'cuatro líneas: área de formación, foco de interés y aporte concreto al proyecto.',
+      '[Resumen profesional: tres o cuatro líneas con tu área de formación, tu foco de ' +
+      'interés y el aporte concreto que hiciste al proyecto.]',
     formacion: [
-      { titulo: '[Institución]', detalle: '[Programa académico · años]' }
+      { titulo: 'Corporación Universitaria Lasallista', detalle: 'Pregrado en curso · Facultad de Ingeniería' },
+      { titulo: 'Herramientas de Inteligencia Artificial', detalle: 'Asignatura 2026 · Proyecto integrador' }
     ],
     experiencia: [
       { titulo: '[Cargo o proyecto]', detalle: '[Organización · logro medible]' }
