@@ -21,8 +21,12 @@
   }
 
   let temaInicial = null;
+  // Un anfitrión que incruste la página puede imponer su tema con data-theme.
+  const temaAnfitrion = raiz.dataset.theme;
+  if (temaAnfitrion === 'dark') temaInicial = 'oscuro';
+  else if (temaAnfitrion === 'light') temaInicial = 'claro';
   try {
-    temaInicial = localStorage.getItem('tema');
+    if (!temaInicial) temaInicial = localStorage.getItem('tema');
   } catch (e) { /* ignorado */ }
   if (!temaInicial) {
     temaInicial = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro';
@@ -79,7 +83,7 @@
   const soportaPDF =
     navigator.pdfViewerEnabled === true ||
     (navigator.mimeTypes && navigator.mimeTypes['application/pdf'] !== undefined);
-  if (!soportaPDF) visor.classList.add('visor--sin-soporte');
+  if (visor && !soportaPDF) visor.classList.add('visor--sin-soporte');
 
   /* --------------------- Perfiles del equipo ------------------------ */
   function pintarEquipo() {
@@ -123,12 +127,17 @@
   /* ------------------- Resultados del experimento ------------------- */
   const numero = (valor) => valor.toFixed(3).replace('.', ',');
 
+  async function obtenerResultados() {
+    if (window.RESULTADOS_EMBEBIDOS) return window.RESULTADOS_EMBEBIDOS;
+    const respuesta = await fetch('assets/resultados.json');
+    if (!respuesta.ok) throw new Error('respuesta ' + respuesta.status);
+    return respuesta.json();
+  }
+
   async function cargarResultados() {
     const cuerpo = document.getElementById('tabla-resultados');
     try {
-      const respuesta = await fetch('assets/resultados.json');
-      if (!respuesta.ok) throw new Error('respuesta ' + respuesta.status);
-      const datos = await respuesta.json();
+      const datos = await obtenerResultados();
 
       document.getElementById('dato-registros').textContent =
         datos.metadatos.n_registros.toLocaleString('es-CO');

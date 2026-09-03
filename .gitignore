@@ -14,3 +14,6 @@ Thumbs.db
 
 # Netlify
 .netlify/
+
+# Versión de un solo archivo, generada por experimento/construir_pagina_unica.py
+dist/
