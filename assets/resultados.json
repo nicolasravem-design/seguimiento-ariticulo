@@ -1,0 +1,114 @@
+{
+  "metadatos": {
+    "n_registros": 10000,
+    "n_entrenamiento": 7000,
+    "n_prueba": 3000,
+    "tasa_falla_pct": 4.36,
+    "semilla": 42,
+    "validacion": "Hold-out 70/30 estratificado + validación cruzada 5-fold sobre entrenamiento",
+    "origen_datos": "Generador sintético reimplementado a partir de Matzka (2020)",
+    "version_sklearn": "1.9.0"
+  },
+  "distribucion_modos_falla": {
+    "TWF": 68,
+    "HDF": 271,
+    "PWF": 53,
+    "OSF": 40,
+    "RNF": 9
+  },
+  "modelos": [
+    {
+      "modelo": "Regresión logística",
+      "exactitud": 0.7533,
+      "precision": 0.13,
+      "sensibilidad": 0.8168,
+      "f1": 0.2243,
+      "roc_auc": 0.849,
+      "pr_auc": 0.3256,
+      "f1_cv_media": 0.2184,
+      "f1_cv_desv": 0.0157,
+      "matriz_confusion": {
+        "vn": 2153,
+        "fp": 716,
+        "fn": 24,
+        "vp": 107
+      }
+    },
+    {
+      "modelo": "Random Forest",
+      "exactitud": 0.9707,
+      "precision": 0.7722,
+      "sensibilidad": 0.4656,
+      "f1": 0.581,
+      "roc_auc": 0.9599,
+      "pr_auc": 0.6942,
+      "f1_cv_media": 0.5813,
+      "f1_cv_desv": 0.0649,
+      "matriz_confusion": {
+        "vn": 2851,
+        "fp": 18,
+        "fn": 70,
+        "vp": 61
+      }
+    },
+    {
+      "modelo": "Gradient Boosting",
+      "exactitud": 0.971,
+      "precision": 0.7973,
+      "sensibilidad": 0.4504,
+      "f1": 0.5756,
+      "roc_auc": 0.9349,
+      "pr_auc": 0.724,
+      "f1_cv_media": 0.6108,
+      "f1_cv_desv": 0.0585,
+      "matriz_confusion": {
+        "vn": 2854,
+        "fp": 15,
+        "fn": 72,
+        "vp": 59
+      }
+    }
+  ],
+  "mejor_modelo": "Random Forest",
+  "ajuste_umbral": {
+    "modelo": "Random Forest",
+    "umbral": 0.33,
+    "f1_oof": 0.6883,
+    "exactitud": 0.9707,
+    "precision": 0.672,
+    "sensibilidad": 0.6412,
+    "f1": 0.6562,
+    "matriz_confusion": {
+      "vn": 2828,
+      "fp": 41,
+      "fn": 47,
+      "vp": 84
+    }
+  },
+  "importancia_permutacion": [
+    {
+      "variable": "temp_proceso_K",
+      "importancia": 0.4012
+    },
+    {
+      "variable": "vel_rotacion_rpm",
+      "importancia": 0.3137
+    },
+    {
+      "variable": "temp_aire_K",
+      "importancia": 0.1817
+    },
+    {
+      "variable": "par_Nm",
+      "importancia": 0.1115
+    },
+    {
+      "variable": "desgaste_min",
+      "importancia": 0.0871
+    },
+    {
+      "variable": "calidad",
+      "importancia": 0.006
+    }
+  ]
+}

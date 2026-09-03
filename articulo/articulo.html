@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Machine Learning aplicado al mantenimiento predictivo en la Industria 4.0</title>
+<style>
+  @page { size: Letter; margin: 0; }
+  html { font-size: 12pt; }
+  body {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    line-height: 2;
+    color: #000;
+    margin: 0;
+    text-align: left;
+  }
+  h1, h2, h3 { font-family: "Times New Roman", Times, serif; font-weight: bold; }
+  h1 { font-size: 1em; text-align: center; margin: 0 0 1em; }
+  h2 { font-size: 1em; margin: 1.4em 0 .4em; page-break-after: avoid; }
+  h3 { font-size: 1em; font-style: italic; margin: 1em 0 .3em; page-break-after: avoid; }
+  p { margin: 0; text-indent: 1.27cm; }
+  p.sin-sangria, .portada p, .resumen p, figcaption, .nota, li { text-indent: 0; }
+  .portada {
+    text-align: center;
+    height: 20cm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    page-break-after: always;
+  }
+  .portada .titulo { font-weight: bold; font-size: 1.15em; margin-bottom: 2em; }
+  .portada p { margin: .15em 0; }
+  .portada .meta { margin-top: 3em; }
+  .resumen { margin-bottom: 1.5em; }
+  .resumen h2 { text-align: center; }
+  .resumen p { text-indent: 0; }
+  .clave { margin-top: .5em; }
+  .clave strong { font-style: italic; font-weight: bold; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: .82em;
+    line-height: 1.35;
+    margin: .3em 0 .6em;
+    page-break-inside: avoid;
+  }
+  caption { text-align: left; margin-bottom: .4em; line-height: 1.4; }
+  caption .num { font-weight: bold; display: block; }
+  caption .tit { font-style: italic; display: block; }
+  th, td { padding: 4px 6px; text-align: left; }
+  thead th { border-top: 1px solid #000; border-bottom: 1px solid #000; }
+  tbody tr:last-child td { border-bottom: 1px solid #000; }
+  td.num, th.num { text-align: right; }
+  figure { margin: 1em 0; page-break-inside: avoid; }
+  .nota { font-size: .78em; line-height: 1.4; margin-top: .3em; }
+  .referencias p {
+    text-indent: -1.27cm;
+    padding-left: 1.27cm;
+    margin-bottom: .3em;
+  }
+  .flujo {
+    list-style: none;
+    padding: 0;
+    margin: .5em 0 1em;
+    font-size: .85em;
+    line-height: 1.5;
+  }
+  .flujo li {
+    border-left: 3px solid #444;
+    padding: .35em .7em;
+    margin-bottom: .35em;
+  }
+  .flujo b { display: block; }
+  ol.lista, ul.lista { line-height: 1.6; margin: .4em 0 .8em 0; }
+  ol.lista li, ul.lista li { margin-bottom: .35em; }
+  code { font-family: "Courier New", monospace; font-size: .85em; }
+</style>
+</head>
+<body>
+
+<section class="portada">
+  <p class="titulo">Machine Learning aplicado al mantenimiento predictivo en la Industria 4.0:<br>
+  algoritmos, métricas y barreras de adopción</p>
+
+  <p>Nicolás Ravem</p>
+  <p>[Integrante 2 del equipo]</p>
+  <p>[Integrante 3 del equipo]</p>
+
+  <p class="meta">Corporación Universitaria Lasallista</p>
+  <p>Facultad de Ingeniería</p>
+  <p>Herramientas de Inteligencia Artificial</p>
+  <p>[Nombre del docente]</p>
+  <p>3 de septiembre de 2026</p>
+</section>
+
+<h1>Machine Learning aplicado al mantenimiento predictivo en la Industria 4.0:<br>algoritmos, métricas y barreras de adopción</h1>
+
+<section class="resumen">
+<h2>Resumen</h2>
+<p>El mantenimiento predictivo (<i>predictive maintenance</i>, PdM) es una de las aplicaciones industriales de mayor tracción del aprendizaje automático, pero la distancia entre los resultados publicados y las implantaciones que sobreviven en planta sigue siendo amplia. Este artículo revisa el estado del arte del PdM basado en <i>machine learning</i> y lo contrasta con un experimento propio, reproducible, sobre un conjunto de datos sintético de 10 000 registros generado con el procedimiento documentado por Matzka (2020). Se entrenaron y compararon tres clasificadores —regresión logística, <i>Random Forest</i> y <i>Gradient Boosting</i>— bajo validación cruzada estratificada de cinco particiones y evaluación en una partición de prueba independiente. Los modelos de ensamble alcanzaron una exactitud de 0,971 pero una sensibilidad de apenas 0,466, lo que confirma que la exactitud es una métrica engañosa cuando la prevalencia de falla es del 4,36 %. El ajuste del umbral de decisión a 0,33, seleccionado sobre predicciones <i>out-of-fold</i>, elevó la sensibilidad a 0,641 y redujo los falsos negativos de 70 a 47 a cambio de una caída de precisión de 0,772 a 0,672. Se concluye que el valor operativo de un sistema de PdM no depende del algoritmo elegido sino de tres decisiones habitualmente subestimadas: la métrica de evaluación, la calibración del umbral frente a costos asimétricos y la interpretabilidad exigida por el personal de mantenimiento. El artículo cierra identificando cuatro barreras de adopción —calidad y etiquetado de los datos, desbalance de clases, deriva de los datos e integración organizacional— y sus contramedidas.</p>
+<p class="clave"><strong>Palabras clave:</strong> mantenimiento predictivo, aprendizaje automático, Industria 4.0, desbalance de clases, interpretabilidad</p>
+</section>
+
+<section class="resumen">
+<h2>Abstract</h2>
+<p>Predictive maintenance (PdM) is one of the fastest-growing industrial applications of machine learning, yet the gap between published results and deployments that survive on the shop floor remains wide. This article reviews the state of the art of machine-learning-based PdM and contrasts it with an original, reproducible experiment on a synthetic dataset of 10,000 records generated with the procedure documented by Matzka (2020). Three classifiers —logistic regression, Random Forest and Gradient Boosting— were trained and compared under five-fold stratified cross-validation with evaluation on a held-out test partition. Ensemble models reached an accuracy of 0.971 but a recall of only 0.466, confirming that accuracy is a misleading metric when failure prevalence is 4.36%. Tuning the decision threshold to 0.33, selected on out-of-fold predictions, raised recall to 0.641 and cut false negatives from 70 to 47, at the cost of precision dropping from 0.772 to 0.672. We conclude that the operational value of a PdM system does not depend on the chosen algorithm but on three commonly underestimated decisions: the evaluation metric, threshold calibration against asymmetric costs, and the interpretability demanded by maintenance staff. The article closes by identifying four adoption barriers —data quality and labelling, class imbalance, data drift and organisational integration— and their countermeasures.</p>
+<p class="clave"><strong>Keywords:</strong> predictive maintenance, machine learning, Industry 4.0, class imbalance, interpretability</p>
+</section>
+
+<h2>Introducción</h2>
+
+<p>La disponibilidad de los activos productivos es, en la mayoría de las plantas industriales, el factor que más condiciona la productividad y el costo unitario. Durante décadas la gestión de esa disponibilidad osciló entre dos extremos igualmente costosos: el mantenimiento correctivo, que interviene el equipo una vez ha fallado y asume el costo de la parada no planificada, y el mantenimiento preventivo, que sustituye componentes según un calendario fijo y desperdicia vida útil remanente. La convergencia de sensórica de bajo costo, conectividad industrial y capacidad de cómputo —el conjunto de tecnologías que suele agruparse bajo la etiqueta de Industria 4.0— habilitó una tercera vía: el mantenimiento predictivo, que estima el estado de salud del activo a partir de sus datos de operación y programa la intervención justo antes de la falla.</p>
+
+<p>El aprendizaje automático es el motor de esa tercera vía. Zonta et al. (2020), tras revisar sistemáticamente 187 estudios, describen el PdM como uno de los pilares operativos de la Industria 4.0 y señalan un crecimiento sostenido de las publicaciones a partir de 2015. Carvalho et al. (2019) documentan, en una revisión sistemática centrada específicamente en métodos de aprendizaje automático, que los enfoques dominantes son los árboles de decisión, los bosques aleatorios, las máquinas de vectores de soporte y las redes neuronales artificiales, y que el problema se formula casi siempre como clasificación de falla o como estimación de vida útil remanente. Hector y Panjanathan (2024) actualizan ese panorama incorporando modelos de planificación, aprendizaje semisupervisado y detección de anomalías.</p>
+
+<p>Sin embargo, la literatura revisada comparte un sesgo que rara vez se discute de forma explícita: los estudios reportan métricas agregadas —con frecuencia la exactitud— sobre conjuntos de datos donde la falla es un evento raro. Ese sesgo tiene una consecuencia práctica seria. Un modelo que nunca predice falla en un proceso con 4 % de prevalencia alcanza una exactitud del 96 % y carece por completo de utilidad operativa. La brecha entre el desempeño reportado y el desempeño percibido en planta explica, al menos parcialmente, por qué muchos pilotos de PdM no superan la fase de prueba.</p>
+
+<p>Este artículo persigue tres objetivos. Primero, sintetizar el estado del arte del PdM basado en aprendizaje automático, organizando el conocimiento disponible en torno al flujo de trabajo real de un proyecto y no en torno al catálogo de algoritmos. Segundo, demostrar empíricamente, mediante un experimento propio y reproducible, cómo la elección de métrica y la calibración del umbral de decisión modifican de forma sustantiva las conclusiones sobre un mismo modelo. Tercero, sistematizar las barreras de adopción que la literatura reporta y asociar a cada una contramedidas concretas. La pregunta que articula el trabajo es: ¿qué decisiones metodológicas determinan que un modelo de mantenimiento predictivo sea operativamente útil, más allá de la familia de algoritmos elegida?</p>
+
+<h2>Metodología</h2>
+
+<p>El trabajo combina dos componentes complementarios. El primero es una revisión narrativa de literatura. La búsqueda se realizó sobre Google Académico, SciELO, Redalyc y repositorios institucionales, con las ecuaciones «predictive maintenance AND machine learning», «mantenimiento predictivo AND aprendizaje automático» e «Industry 4.0 AND predictive maintenance», priorizando revisiones sistemáticas y artículos con datos empíricos publicados entre 2015 y 2025. Se retuvieron doce fuentes, seleccionadas por su carácter de revisión sistemática, por aportar un conjunto de datos de referencia o por documentar una aplicación industrial verificable.</p>
+
+<p>El segundo componente es un experimento computacional propio. Dado que el acceso a datos industriales reales está restringido por acuerdos de confidencialidad, se reimplementó el generador de datos sintéticos descrito por Matzka (2020) para el <i>AI4I 2020 Predictive Maintenance Dataset</i>. El generador produce 10 000 registros con seis variables predictoras —variante de calidad del producto (L, M, H), temperatura del aire, temperatura de proceso, velocidad de rotación, par y desgaste de herramienta— y una etiqueta binaria de falla derivada de cinco modos independientes: falla por desgaste de herramienta (TWF), por disipación de calor (HDF), por potencia (PWF), por sobreesfuerzo (OSF) y aleatoria (RNF). Es necesaria una precisión metodológica: los datos empleados <i>no</i> son el archivo original del repositorio UCI, sino una reimplementación del procedimiento publicado. Dos parámetros que la publicación original no cuantifica —la potencia nominal de referencia y la desviación del ruido sobre la velocidad de rotación— se calibraron en 6 500 W y 200 rpm respectivamente, con el fin de aproximar la prevalencia de falla documentada. El conjunto resultante presenta una tasa de falla del 4,36 %, comparable al 3,39 % del conjunto original.</p>
+
+<p>Se compararon tres clasificadores supervisados de complejidad creciente: regresión logística con ponderación de clases, <i>Random Forest</i> de 400 árboles con ponderación por submuestra y <i>Gradient Boosting</i> con hiperparámetros por defecto. Las variables numéricas se estandarizaron y la variable de calidad se codificó mediante <i>one-hot encoding</i>; ambas transformaciones se encapsularon junto al clasificador en una tubería de procesamiento, de modo que el ajuste de los transformadores ocurra solo con los datos de entrenamiento de cada partición y se evite la fuga de información. Los datos se dividieron en 70 % de entrenamiento y 30 % de prueba con estratificación por la etiqueta. Cada modelo se validó mediante validación cruzada estratificada de cinco particiones sobre el conjunto de entrenamiento y se evaluó finalmente sobre la partición de prueba, no vista durante el ajuste. Se reportan exactitud, precisión, sensibilidad, puntaje F1, área bajo la curva ROC y área bajo la curva de precisión-sensibilidad. La importancia de las variables se estimó por permutación, y el umbral de decisión se optimizó mediante un barrido sobre predicciones <i>out-of-fold</i> del conjunto de entrenamiento, nunca sobre la partición de prueba. Todo el procedimiento se ejecutó con una semilla aleatoria fija (42) y el código fuente completo se distribuye en el repositorio del proyecto, de modo que los resultados aquí reportados son reproducibles ejecución tras ejecución.</p>
+
+<h2>Desarrollo</h2>
+
+<h3>Del mantenimiento correctivo al predictivo</h3>
+
+<p>Las estrategias de mantenimiento pueden ordenarse en función de la información que utilizan para decidir la intervención. El mantenimiento correctivo actúa después del evento y no utiliza información anticipada; el preventivo utiliza información estadística poblacional, expresada como intervalos fijos; el mantenimiento basado en condición incorpora mediciones del activo individual y dispara la intervención cuando una variable supera un umbral; el mantenimiento predictivo, finalmente, utiliza el historial completo del activo para estimar cuándo ocurrirá la falla. Zonta et al. (2020) sitúan esta progresión como el eje del cambio tecnológico en la gestión de activos, y Hector y Panjanathan (2024) subrayan que el salto del tercero al cuarto nivel es de naturaleza distinta a los anteriores: exige un modelo del comportamiento del activo, no solo un umbral.</p>
+
+<p>La distinción operativa entre el mantenimiento basado en condición y el predictivo merece énfasis porque suele diluirse. Un sistema basado en condición responde a la pregunta «¿está el activo fuera de rango ahora?»; un sistema predictivo responde a «¿cuánto falta para que el activo salga de rango?». La primera pregunta admite una regla fija; la segunda requiere aprender la relación entre el patrón multivariado de operación y el tiempo hasta la falla. Es en esa segunda pregunta donde el aprendizaje automático aporta valor diferencial, y también donde aparecen las dificultades metodológicas que este artículo examina.</p>
+
+<h3>Flujo de trabajo de un proyecto de PdM</h3>
+
+<p>La literatura converge en un flujo de trabajo de cinco etapas, que Hector y Panjanathan (2024) formulan como limpieza de datos, normalización, extracción óptima de características, modelo de decisión y modelo de predicción. Lei et al. (2018), desde la perspectiva del pronóstico de vida útil remanente, proponen una secuencia equivalente: adquisición de datos, construcción de indicadores de salud, división en etapas de degradación y predicción de vida remanente. La Tabla 1 sintetiza ambas formulaciones y señala el riesgo dominante de cada etapa.</p>
+
+<table>
+  <caption><span class="num">Tabla 1</span><span class="tit">Etapas de un proyecto de mantenimiento predictivo y su riesgo dominante</span></caption>
+  <thead>
+    <tr><th>Etapa</th><th>Objetivo</th><th>Riesgo dominante</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Adquisición y limpieza</td><td>Consolidar señales de sensores, órdenes de trabajo e historial de fallas</td><td>Etiquetas de falla incompletas o registradas con retraso</td></tr>
+    <tr><td>Ingeniería de características</td><td>Derivar indicadores de salud a partir de señales crudas</td><td>Fuga de información desde el futuro hacia el pasado</td></tr>
+    <tr><td>Partición y validación</td><td>Estimar el desempeño esperado en operación</td><td>Partición aleatoria sobre series temporales</td></tr>
+    <tr><td>Modelado</td><td>Aprender la relación entre patrón de operación y falla</td><td>Optimizar una métrica que no refleja el costo real</td></tr>
+    <tr><td>Despliegue y monitoreo</td><td>Integrar la predicción en la planificación del mantenimiento</td><td>Deriva de los datos y pérdida de confianza del usuario</td></tr>
+  </tbody>
+</table>
+<p class="nota"><i>Nota.</i> Elaboración propia a partir de Lei et al. (2018), Zonta et al. (2020) y Hector y Panjanathan (2024).</p>
+
+<p>Vale la pena detenerse en el riesgo de la tercera etapa, porque es el más frecuente y el menos visible. Los datos de mantenimiento son series temporales: una partición aleatoria mezcla registros anteriores y posteriores a un mismo evento de falla, y el modelo termina evaluado sobre información que en operación real no habría estado disponible. El desempeño reportado bajo ese esquema es sistemáticamente optimista. La contramedida es particionar por bloques temporales o por unidad de equipo, según cuál sea la unidad de generalización que interesa.</p>
+
+<h3>Familias de algoritmos y su ajuste al problema</h3>
+
+<p>Carvalho et al. (2019) encuentran que los bosques aleatorios son el método más reportado en la literatura de PdM, seguidos por las redes neuronales artificiales, las máquinas de vectores de soporte y los métodos de <i>boosting</i>. Esa preferencia no es arbitraria. Los datos de mantenimiento son típicamente tabulares, heterogéneos —mezclan variables continuas de proceso con categóricas de configuración—, presentan relaciones no lineales y umbrales de interacción, y no requieren la capacidad de representación de una red profunda. Los ensambles de árboles, descritos por Breiman (2001) para el caso de los bosques aleatorios y por Chen y Guestrin (2016) para el <i>gradient boosting</i> escalable, son precisamente el estimador adecuado para ese perfil: capturan interacciones y umbrales sin ingeniería de características costosa y toleran variables en escalas dispares.</p>
+
+<p>Las redes neuronales profundas, en cambio, aportan valor cuando la entrada es una señal cruda de alta frecuencia —vibración, corriente, acústica— y la representación relevante debe aprenderse. Lei et al. (2018) documentan ese uso en el pronóstico de vida útil remanente a partir de señales de vibración de rodamientos. La elección, por tanto, no es una cuestión de sofisticación sino de correspondencia entre la naturaleza del dato y la capacidad del modelo.</p>
+
+<p>Existe además una familia frecuentemente ignorada: la detección de anomalías no supervisada. Susto et al. (2015) proponen un enfoque de clasificadores múltiples que permite ajustar explícitamente el compromiso entre intervenciones innecesarias y fallas no detectadas, y Hector y Panjanathan (2024) documentan el uso de modelos no supervisados y semisupervisados justamente en los escenarios donde no existen etiquetas de falla confiables, que es la situación más común al iniciar un proyecto en una planta real.</p>
+
+<h3>El problema de la métrica: resultados del experimento</h3>
+
+<p>La Tabla 2 presenta los resultados de los tres clasificadores sobre la partición de prueba. La lectura conjunta de sus columnas es el hallazgo central de este trabajo.</p>
+
+<table>
+  <caption><span class="num">Tabla 2</span><span class="tit">Desempeño de los clasificadores sobre la partición de prueba (n = 3 000)</span></caption>
+  <thead>
+    <tr>
+      <th>Modelo</th><th class="num">Exactitud</th><th class="num">Precisión</th>
+      <th class="num">Sensibilidad</th><th class="num">F1</th><th class="num">ROC-AUC</th>
+      <th class="num">PR-AUC</th><th class="num">F1 (CV 5-fold)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Regresión logística</td><td class="num">0,753</td><td class="num">0,130</td><td class="num">0,817</td><td class="num">0,224</td><td class="num">0,849</td><td class="num">0,326</td><td class="num">0,218 ± 0,016</td></tr>
+    <tr><td>Random Forest</td><td class="num">0,971</td><td class="num">0,772</td><td class="num">0,466</td><td class="num">0,581</td><td class="num">0,960</td><td class="num">0,694</td><td class="num">0,581 ± 0,065</td></tr>
+    <tr><td>Gradient Boosting</td><td class="num">0,971</td><td class="num">0,797</td><td class="num">0,450</td><td class="num">0,576</td><td class="num">0,935</td><td class="num">0,724</td><td class="num">0,611 ± 0,059</td></tr>
+  </tbody>
+</table>
+<p class="nota"><i>Nota.</i> Resultados propios. Conjunto sintético de 10 000 registros, prevalencia de falla 4,36 %, semilla aleatoria 42. La columna de validación cruzada reporta media ± desviación estándar del F1 sobre cinco particiones del conjunto de entrenamiento.</p>
+
+<p>Si el criterio de selección fuera la exactitud, ambos ensambles resultarían indistinguibles y excelentes: 0,971. La conclusión sería que el problema está resuelto. Basta observar la sensibilidad para desmontar esa lectura: el <i>Random Forest</i> detecta apenas el 46,6 % de las fallas reales y el <i>Gradient Boosting</i> el 45,0 %. Más de la mitad de las fallas pasa desapercibida en un sistema cuya exactitud invita a declararlo exitoso. La razón es aritmética: con una prevalencia del 4,36 %, un clasificador trivial que prediga siempre «sin falla» obtiene 95,6 % de exactitud. El margen que separa a un modelo útil de uno inútil, medido en exactitud, es de apenas 1,5 puntos porcentuales, un rango en el que la métrica carece de poder discriminante.</p>
+
+<p>El contraste entre ROC-AUC y PR-AUC refuerza el argumento. El <i>Random Forest</i> alcanza un ROC-AUC de 0,960, valor que en la práctica se leería como un desempeño casi perfecto; su PR-AUC, sin embargo, es de 0,694. La diferencia se explica porque la curva ROC incorpora los verdaderos negativos, abundantes por construcción en un problema desbalanceado, mientras que la curva de precisión-sensibilidad se concentra en la clase minoritaria, que es la que interesa. En problemas de PdM, el PR-AUC es la métrica agregada informativa.</p>
+
+<p>El caso de la regresión logística merece comentario aparte porque ilustra el efecto contrario. Con ponderación de clases activada, alcanza la sensibilidad más alta del conjunto (0,817) pero una precisión de 0,130: de cada ocho alertas que emite, siete son falsas. Un sistema así saturaría de órdenes de trabajo innecesarias al equipo de mantenimiento y sería desconectado en cuestión de semanas. Ninguna de las dos métricas, aisladamente, describe el comportamiento del modelo; solo su lectura conjunta lo hace.</p>
+
+<h3>Calibración del umbral frente a costos asimétricos</h3>
+
+<p>Los resultados anteriores corresponden al umbral de decisión por defecto de 0,5, que asume implícitamente que un falso positivo y un falso negativo cuestan lo mismo. En mantenimiento industrial ese supuesto es falso casi siempre: el costo de una inspección innecesaria es el de unas horas de técnico, mientras que el de una parada no planificada incluye lucro cesante, daño colateral al equipo y, según el activo, riesgo para las personas. Susto et al. (2015) señalan explícitamente la necesidad de ajustar ese compromiso de forma deliberada.</p>
+
+<p>Para cuantificar el efecto se realizó un barrido de umbrales entre 0,05 y 0,95 sobre predicciones <i>out-of-fold</i> del conjunto de entrenamiento, seleccionando el que maximiza el F1. El umbral óptimo resultó ser 0,33, y su aplicación a la partición de prueba produjo los resultados de la Tabla 3.</p>
+
+<table>
+  <caption><span class="num">Tabla 3</span><span class="tit">Efecto del ajuste del umbral de decisión sobre el modelo Random Forest</span></caption>
+  <thead>
+    <tr><th>Configuración</th><th class="num">Precisión</th><th class="num">Sensibilidad</th><th class="num">F1</th><th class="num">Falsos negativos</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Umbral por defecto (0,50)</td><td class="num">0,772</td><td class="num">0,466</td><td class="num">0,581</td><td class="num">70</td></tr>
+    <tr><td>Umbral ajustado (0,33)</td><td class="num">0,672</td><td class="num">0,641</td><td class="num">0,656</td><td class="num">47</td></tr>
+  </tbody>
+</table>
+<p class="nota"><i>Nota.</i> Resultados propios. El umbral se seleccionó sobre predicciones <i>out-of-fold</i> del conjunto de entrenamiento y se aplicó sin reajuste a la partición de prueba.</p>
+
+<p>El desplazamiento del umbral en diecisiete centésimas incrementó la sensibilidad en 17,5 puntos porcentuales y evitó 23 fallas no detectadas de 131, a cambio de una pérdida de 10 puntos de precisión. Es un intercambio que ningún cambio de algoritmo produjo: la diferencia entre el mejor y el peor de los dos ensambles fue de medio punto de F1, mientras que mover el umbral sobre el mismo modelo aportó 7,5 puntos. El hallazgo tiene una implicación directa para la práctica: antes de invertir esfuerzo en probar arquitecturas más complejas, conviene agotar la calibración del modelo que ya se tiene, y hacerlo con una función de costo derivada de las cifras reales de la planta y no de un criterio estadístico genérico como el F1.</p>
+
+<h3>Interpretabilidad como condición de adopción</h3>
+
+<p>Un planificador de mantenimiento no ejecuta una orden de trabajo porque un modelo emita una probabilidad; la ejecuta cuando entiende qué la motivó. Matzka (2020) construyó su conjunto de datos precisamente para investigar inteligencia artificial explicable en aplicaciones de mantenimiento predictivo, y Lundberg y Lee (2017) proporcionaron con SHAP un marco unificado para atribuir la predicción de cualquier modelo a la contribución de cada variable.</p>
+
+<p>En el experimento reportado, la importancia por permutación sobre el <i>Random Forest</i> ordenó las variables así: temperatura de proceso (0,401), velocidad de rotación (0,314), temperatura del aire (0,182), par (0,112), desgaste de herramienta (0,087) y variante de calidad (0,006). El ordenamiento es coherente con los modos de falla que el generador implementa: la falla por disipación de calor depende de la diferencia entre ambas temperaturas y de la velocidad de rotación, y la falla por potencia depende del producto de par y velocidad. Que el modelo recupere esa estructura sin conocerla constituye una validación de sentido físico, y es exactamente el tipo de evidencia que permite a un ingeniero de mantenimiento otorgar confianza al sistema. La contribución marginal de la variante de calidad, en cambio, indica que esa variable aporta poco al modelo global, aunque interviene en los umbrales de sobreesfuerzo.</p>
+
+<h3>Barreras de adopción</h3>
+
+<p>La revisión permite sistematizar cuatro barreras recurrentes. La primera es la calidad y disponibilidad de las etiquetas. Zonta et al. (2020) y Carvalho et al. (2019) coinciden en que el historial de fallas suele residir en órdenes de trabajo redactadas en texto libre, con fechas de registro posteriores al evento real, lo que introduce ruido en la variable objetivo. La contramedida es invertir en la trazabilidad del registro de fallas antes que en el modelo, y considerar enfoques semisupervisados o de detección de anomalías mientras las etiquetas maduran.</p>
+
+<p>La segunda es el desbalance de clases, documentado empíricamente en este trabajo. Las contramedidas disponibles son la ponderación de clases en la función de pérdida, el remuestreo del conjunto de entrenamiento, la selección de métricas sensibles a la clase minoritaria y la calibración del umbral. Conviene señalar que la ponderación aplicada sin control produjo, en el caso de la regresión logística, un modelo inservible por exceso de falsos positivos: la contramedida requiere verificación, no aplicación automática.</p>
+
+<p>La tercera es la deriva de los datos. Un modelo entrenado con datos de una configuración de proceso pierde validez cuando cambia la materia prima, el turno, el lote o el propio equipo tras una intervención mayor. Hector y Panjanathan (2024) incluyen el monitoreo posterior al despliegue entre los desafíos abiertos del campo. La contramedida es instrumentar el monitoreo de la distribución de las variables de entrada y del desempeño del modelo desde el primer día de operación, y definir de antemano el criterio de reentrenamiento.</p>
+
+<p>La cuarta es organizacional. Un sistema de PdM modifica la forma en que se planifica el trabajo y redistribuye autoridad sobre decisiones que antes tomaba el jefe de mantenimiento. Alvarez Quiñones et al. (2022), al implementar un modelo de clasificación para programar el mantenimiento predictivo de transformadores de distribución en el departamento del Cauca, señalan que el valor del modelo reside en priorizar el conjunto mínimo de activos propensos a fallar, es decir, en integrarse a un proceso de planificación existente. Romero Magdaleno et al. (2025), al aplicar bosques aleatorios y Naive Bayes a la clasificación de fallas de maquinaria industrial, apuntan en la misma dirección: el beneficio se materializa en la detección anticipada que permite reorganizar la operación de mantenimiento, no en la métrica del modelo.</p>
+
+<h2>Conclusiones</h2>
+
+<p>El recorrido realizado permite sostener cuatro conclusiones.</p>
+
+<p class="sin-sangria"><b>Primera.</b> La familia de algoritmos es la decisión menos determinante del proyecto. En el experimento, la diferencia de F1 entre <i>Random Forest</i> y <i>Gradient Boosting</i> fue de 0,005, un valor inferior a la desviación estándar de la validación cruzada de cualquiera de los dos y por tanto estadísticamente indistinguible. La literatura revisada, que reporta a los ensambles de árboles como método dominante para datos tabulares de mantenimiento, es consistente con este hallazgo: una vez elegida la familia adecuada al tipo de dato, el margen de mejora por sustitución de algoritmo es marginal.</p>
+
+<p class="sin-sangria"><b>Segunda.</b> La métrica de evaluación sí es determinante. Con una prevalencia de falla del 4,36 %, la exactitud de 0,971 obtenida por ambos ensambles ocultaba una sensibilidad de 0,466: más de la mitad de las fallas no detectadas. Un proyecto que reporte exactitud en un problema de esta naturaleza no está midiendo lo que afirma medir. Las métricas apropiadas son la sensibilidad, la precisión, el F1 y el área bajo la curva de precisión-sensibilidad, y deben reportarse en conjunto.</p>
+
+<p class="sin-sangria"><b>Tercera.</b> La calibración del umbral produjo la mayor ganancia operativa de todo el experimento. Desplazarlo de 0,50 a 0,33 aumentó la sensibilidad de 0,466 a 0,641 y evitó 23 fallas no detectadas, mientras que ningún cambio de modelo aportó más de medio punto de F1. Dado que en mantenimiento el costo de un falso negativo excede sistemáticamente al de un falso positivo, ese umbral debería derivarse de las cifras económicas de la planta y no de un criterio estadístico general.</p>
+
+<p class="sin-sangria"><b>Cuarta.</b> La interpretabilidad no es un requisito accesorio sino una condición de adopción. Que la importancia por permutación recuperara la estructura física de los modos de falla —temperaturas y velocidad de rotación al frente, coherentes con las fallas por disipación de calor y por potencia— es el tipo de evidencia que convierte una probabilidad en una orden de trabajo ejecutada.</p>
+
+<p>El trabajo presenta dos limitaciones que conviene explicitar. Los datos son sintéticos y provienen de un generador con reglas deterministas conocidas, de modo que las magnitudes absolutas de las métricas no son extrapolables a una planta real; lo que sí es extrapolable es la estructura del argumento, que depende únicamente de la baja prevalencia y de la asimetría de costos, condiciones presentes en cualquier escenario industrial de PdM. Además, el problema se formuló como clasificación binaria de falla y no como estimación de vida útil remanente, formulación esta última que Lei et al. (2018) desarrollan y que exige datos de degradación continua no disponibles en el conjunto empleado. Como línea de trabajo futura se propone replicar el experimento sobre datos de operación reales de una planta local y sustituir el F1 por una función de costo expresada en unidades monetarias, que es la forma en que la decisión se plantea efectivamente en el ámbito industrial.</p>
+
+<h2 style="page-break-before: always;">Referencias</h2>
+
+<section class="referencias">
+<p>Alvarez Quiñones, L. I., Lozano Moncada, C. A., y Bravo Montenegro, D. A. (2022). Metodología para el mantenimiento predictivo de transformadores de distribución basada en aprendizaje automático. <i>Ingeniería</i>, <i>27</i>(3), e17742. https://doi.org/10.14483/23448393.17742</p>
+
+<p>Breiman, L. (2001). Random forests. <i>Machine Learning</i>, <i>45</i>(1), 5–32. https://doi.org/10.1023/A:1010933404324</p>
+
+<p>Carvalho, T. P., Soares, F. A. A. M. N., Vita, R., Francisco, R. P., Basto, J. P., y Alcalá, S. G. S. (2019). A systematic literature review of machine learning methods applied to predictive maintenance. <i>Computers &amp; Industrial Engineering</i>, <i>137</i>, 106024. https://doi.org/10.1016/j.cie.2019.106024</p>
+
+<p>Chen, T., y Guestrin, C. (2016). XGBoost: A scalable tree boosting system. En <i>Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</i> (pp. 785–794). Association for Computing Machinery. https://doi.org/10.1145/2939672.2939785</p>
+
+<p>Hector, I., y Panjanathan, R. (2024). Predictive maintenance in Industry 4.0: A survey of planning models and machine learning techniques. <i>PeerJ Computer Science</i>, <i>10</i>, e2016. https://doi.org/10.7717/peerj-cs.2016</p>
+
+<p>Lei, Y., Li, N., Guo, L., Li, N., Yan, T., y Lin, J. (2018). Machinery health prognostics: A systematic review from data acquisition to RUL prediction. <i>Mechanical Systems and Signal Processing</i>, <i>104</i>, 799–834. https://doi.org/10.1016/j.ymssp.2017.11.016</p>
+
+<p>Lundberg, S. M., y Lee, S.-I. (2017). A unified approach to interpreting model predictions. En <i>Advances in Neural Information Processing Systems 30</i> (pp. 4765–4774). Curran Associates.</p>
+
+<p>Matzka, S. (2020). Explainable artificial intelligence for predictive maintenance applications. En <i>2020 Third International Conference on Artificial Intelligence for Industries (AI4I)</i> (pp. 69–74). IEEE. https://doi.org/10.1109/AI4I49448.2020.00023</p>
+
+<p>Romero Magdaleno, K. I., Méndez González, L. C., González Hernández, I. J., y Quezada Carreón, A. E. (2025). Implementación de modelos de aprendizaje automático para el mantenimiento predictivo y clasificación de fallas de maquinaria industrial. <i>Ingenio y Conciencia Boletín Científico de la Escuela Superior Ciudad Sahagún</i>, <i>12</i>(Especial), 1–8.</p>
+
+<p>Saxena, A., Goebel, K., Simon, D., y Eklund, N. (2008). Damage propagation modeling for aircraft engine run-to-failure simulation. En <i>2008 International Conference on Prognostics and Health Management</i> (pp. 1–9). IEEE. https://doi.org/10.1109/PHM.2008.4711414</p>
+
+<p>Susto, G. A., Schirru, A., Pampuri, S., McLoone, S., y Beghi, A. (2015). Machine learning for predictive maintenance: A multiple classifier approach. <i>IEEE Transactions on Industrial Informatics</i>, <i>11</i>(3), 812–820. https://doi.org/10.1109/TII.2014.2349359</p>
+
+<p>Zonta, T., da Costa, C. A., da Rosa Righi, R., de Lima, M. J., da Trindade, E. S., y Li, G. P. (2020). Predictive maintenance in the Industry 4.0: A systematic literature review. <i>Computers &amp; Industrial Engineering</i>, <i>150</i>, 106889. https://doi.org/10.1016/j.cie.2020.106889</p>
+</section>
+
+</body>
+</html>

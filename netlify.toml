@@ -1,0 +1,45 @@
+# Configuración de despliegue continuo en Netlify.
+# El sitio es estático: no requiere paso de compilación.
+
+[build]
+  publish = "."
+  command = ""
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Cabeceras de seguridad y de caché.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[headers]]
+  for = "/assets/articulo.pdf"
+  [headers.values]
+    Content-Type = "application/pdf"
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# Las rutas antiguas o mal escritas caen en la portada.
+[[redirects]]
+  from = "/articulo"
+  to = "/#articulo"
+  status = 302
+
+[[redirects]]
+  from = "/curriculum"
+  to = "/#curriculum"
+  status = 302

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es" data-tema="claro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Machine Learning para mantenimiento predictivo | Artículo, equipo y aula interactiva</title>
+<meta name="description" content="Artículo académico sobre machine learning aplicado al mantenimiento predictivo en la Industria 4.0, perfil del equipo y un aula interactiva con chatbot, test y flashcards.">
+<meta name="author" content="Nicolás Ravem y equipo">
+<meta name="theme-color" content="#1f5fd8">
+<meta property="og:title" content="Machine Learning para mantenimiento predictivo en la Industria 4.0">
+<meta property="og:description" content="Artículo en PDF, currículum del equipo y aula interactiva con chatbot, test y flashcards.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231f5fd8'/><text y='.9em' x='50%25' text-anchor='middle' font-size='62'>⚙</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+
+<header class="cabecera">
+  <div class="contenedor cabecera__fila">
+    <div class="marca">
+      <span class="marca__icono" aria-hidden="true">⚙</span>
+      <span class="marca__texto">
+        ML &amp; Mantenimiento Predictivo
+        <small>Corporación Universitaria Lasallista</small>
+      </span>
+    </div>
+
+    <nav aria-label="Secciones del sitio">
+      <div class="pestanas" role="tablist">
+        <button class="pestana" role="tab" id="tab-articulo"
+                aria-controls="panel-articulo" aria-selected="true" data-panel="articulo">
+          <span aria-hidden="true">📄</span> Artículo
+        </button>
+        <button class="pestana" role="tab" id="tab-curriculum"
+                aria-controls="panel-curriculum" aria-selected="false" data-panel="curriculum" tabindex="-1">
+          <span aria-hidden="true">👥</span> Currículum
+        </button>
+        <button class="pestana" role="tab" id="tab-interactivo"
+                aria-controls="panel-interactivo" aria-selected="false" data-panel="interactivo" tabindex="-1">
+          <span aria-hidden="true">💬</span> Proceso interactivo
+        </button>
+      </div>
+    </nav>
+
+    <button class="boton-tema" id="boton-tema" type="button"
+            aria-label="Cambiar entre tema claro y oscuro">
+      <span aria-hidden="true" id="icono-tema">🌙</span>
+    </button>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ============================ PESTAÑA 1 ============================ -->
+  <section class="panel contenedor" id="panel-articulo" role="tabpanel" aria-labelledby="tab-articulo">
+
+    <div class="articulo-cabecera">
+      <div class="panel__intro">
+        <span class="etiqueta">Pestaña 1 · Artículo</span>
+        <h1 class="titulo-seccion">Machine Learning aplicado al mantenimiento predictivo en la Industria&nbsp;4.0</h1>
+        <p class="subtitulo">Algoritmos, métricas y barreras de adopción. Revisión de literatura y experimento
+        reproducible sobre 10&nbsp;000 registros, con formato APA 7.ª edición.</p>
+      </div>
+      <div class="acciones">
+        <a class="boton boton--principal" href="assets/articulo.pdf" download="articulo-ml-mantenimiento-predictivo.pdf">
+          <span aria-hidden="true">⬇</span> Descargar PDF
+        </a>
+        <a class="boton" href="assets/articulo.pdf" target="_blank" rel="noopener">
+          <span aria-hidden="true">↗</span> Abrir en pestaña nueva
+        </a>
+      </div>
+    </div>
+
+    <div class="visor" id="visor-pdf">
+      <iframe src="assets/articulo.pdf#view=FitH"
+              title="Visor del artículo académico en PDF" loading="lazy"></iframe>
+      <div class="visor__respaldo">
+        <p><strong>Tu navegador no puede mostrar el PDF incrustado.</strong></p>
+        <p>Usa el botón de descarga para leer el artículo completo.</p>
+        <a class="boton boton--principal" href="assets/articulo.pdf" download>Descargar el artículo</a>
+      </div>
+    </div>
+
+    <dl class="ficha">
+      <div class="ficha__dato tarjeta"><dt>Registros analizados</dt><dd id="dato-registros">10 000</dd></div>
+      <div class="ficha__dato tarjeta"><dt>Prevalencia de falla</dt><dd id="dato-prevalencia">4,36 %</dd></div>
+      <div class="ficha__dato tarjeta"><dt>Modelos comparados</dt><dd id="dato-modelos">3</dd></div>
+      <div class="ficha__dato tarjeta"><dt>Referencias APA</dt><dd>12</dd></div>
+    </dl>
+
+    <h2 class="titulo-seccion" style="font-size:1.3rem;margin-top:2.4rem;">Resultados del experimento</h2>
+    <p class="subtitulo" style="margin-bottom:1rem;">Datos cargados desde
+      <code>assets/resultados.json</code>, el mismo archivo que produce el script
+      <code>experimento/experimento_pdm.py</code>.</p>
+
+    <div class="tabla-envoltorio">
+      <table class="datos">
+        <caption class="visualmente-oculto">Desempeño de los tres clasificadores sobre la partición de prueba</caption>
+        <thead>
+          <tr>
+            <th scope="col">Modelo</th><th scope="col">Exactitud</th><th scope="col">Precisión</th>
+            <th scope="col">Sensibilidad</th><th scope="col">F1</th>
+            <th scope="col">ROC-AUC</th><th scope="col">PR-AUC</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-resultados">
+          <tr><td colspan="7">Cargando resultados…</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="subtitulo" style="font-size:.85rem;margin-top:.7rem;" id="nota-resultados"></p>
+  </section>
+
+  <!-- ============================ PESTAÑA 2 ============================ -->
+  <section class="panel contenedor" id="panel-curriculum" role="tabpanel" aria-labelledby="tab-curriculum" hidden>
+
+    <div class="panel__intro">
+      <span class="etiqueta">Pestaña 2 · Currículum</span>
+      <h2 class="titulo-seccion">Perfil profesional del equipo</h2>
+      <p class="subtitulo">Formación, experiencia y competencias de quienes elaboraron el artículo y esta plataforma.</p>
+    </div>
+
+    <div class="aviso">
+      <span aria-hidden="true">✏️</span>
+      <div><b>Para el equipo:</b> los perfiles 2 y 3 son plantillas. Edita el arreglo
+      <code>EQUIPO</code> en <code>js/equipo.js</code> con los datos reales de cada integrante;
+      las tarjetas se generan automáticamente a partir de ese archivo.</div>
+    </div>
+
+    <div class="equipo" id="equipo"></div>
+  </section>
+
+  <!-- ============================ PESTAÑA 3 ============================ -->
+  <section class="panel contenedor" id="panel-interactivo" role="tabpanel" aria-labelledby="tab-interactivo" hidden>
+
+    <div class="panel__intro">
+      <span class="etiqueta">Pestaña 3 · Proceso interactivo</span>
+      <h2 class="titulo-seccion">Aula interactiva</h2>
+      <p class="subtitulo">Tres formas de aprender el contenido del artículo: conversa con el asistente,
+      pon a prueba lo aprendido con el test o repasa los conceptos clave con las tarjetas.</p>
+    </div>
+
+    <div class="modos" role="group" aria-label="Modo de aprendizaje">
+      <button class="modo" type="button" data-modo="chat" aria-pressed="true">💬 Chatbot</button>
+      <button class="modo" type="button" data-modo="test" aria-pressed="false">🎯 Test</button>
+      <button class="modo" type="button" data-modo="tarjetas" aria-pressed="false">🗂 Flashcards</button>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="modo-panel" id="modo-chat">
+      <div class="chat tarjeta">
+        <div class="chat__mensajes" id="chat-mensajes" role="log" aria-live="polite" aria-label="Conversación con el asistente"></div>
+        <div class="chat__pie">
+          <div class="sugerencias" id="sugerencias" aria-label="Preguntas sugeridas"></div>
+          <form class="chat__formulario" id="chat-formulario" autocomplete="off">
+            <label class="visualmente-oculto" for="chat-entrada">Escribe tu pregunta</label>
+            <input class="chat__entrada" id="chat-entrada" type="text"
+                   placeholder="Pregunta sobre mantenimiento predictivo, métricas, algoritmos…" required>
+            <button class="boton boton--principal" type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+      <p class="subtitulo" style="font-size:.83rem;margin-top:.8rem;">
+        El asistente funciona íntegramente en tu navegador: no envía datos a ningún servidor.
+        Responde a partir de una base de conocimiento construida con el contenido del artículo.
+      </p>
+    </div>
+
+    <!-- Test -->
+    <div class="modo-panel" id="modo-test" hidden>
+      <div class="test tarjeta" id="test"></div>
+    </div>
+
+    <!-- Flashcards -->
+    <div class="modo-panel" id="modo-tarjetas" hidden>
+      <div class="tarjetas-zona" id="tarjetas-zona"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor pie__fila">
+    <p style="margin:0">© 2026 · Nicolás Ravem y equipo · Corporación Universitaria Lasallista</p>
+    <p style="margin:0">
+      <a href="https://github.com/nicolasravem-design/seguimiento-ariticulo" target="_blank" rel="noopener">Código fuente en GitHub</a>
+    </p>
+  </div>
+</footer>
+
+<script src="js/equipo.js"></script>
+<script src="js/conocimiento.js"></script>
+<script src="js/chatbot.js"></script>
+<script src="js/aprendizaje.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
